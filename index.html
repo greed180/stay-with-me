@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jun's 쿠팡</title>
+  
+  <!-- Favicon Files -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+      text-align: center;
+      background-image: url('background.jpg'); /* 이미지 파일 경로 */
+      background-size: cover;
+      background-position: center;
+    }
+
+    iframe {
+      margin-top: 0; /* 간격을 대폭 줄였습니다 */
+      margin-bottom: 0; /* 간격을 대폭 줄였습니다 */
+      max-width: 100%;
+    }
+
+    h1 {
+      font-size: 38px;
+      font-weight: bold;
+      margin-bottom: 10px; /* 하단 간격을 줄였습니다 */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .home-link {
+      display: inline-block;
+      padding: 30px 120px;
+      background-color: #ff6347;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 30px;
+      margin-top: 0px;
+    }
+
+    .rocket-link {
+      display: inline-block;
+      padding: 20px 30px;
+      background-color: #ff7f50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .rocket-link .emoji {
+      display: block;
+      font-size: 36px;
+      margin-top: 5px;
+    }
+
+    .message {
+      font-size: 50px;
+      font-weight: bold;
+      color: #faf4f4;
+      margin-top: 10px; /* 위쪽 간격을 추가하여 조금 더 위로 이동시켰습니다 */
+      margin-bottom: 0px; /* 간격을 완전히 제거 */
+    }
+
+    .fixed-message {
+      position: fixed;
+      bottom: 140px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      color: #333;
+      font-size: 16px;
+      font-weight: bold;
+      z-index: 1000;
+      text-align: center;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      white-space: nowrap;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+    }
+
+    .android-message {
+      margin-bottom: 5px; /* 간격을 대폭 줄였습니다 */
+      padding: 5px 10px;
+      font-size: 13px;
+      background-color: rgba(224, 247, 250, 0.9);
+    }
+
+    .ios-message {
+      margin-bottom: 5px; /* 간격을 대폭 줄였습니다 */
+      padding: 5px 10px;
+      font-size: 14px;
+      background-color: rgba(255, 223, 186, 0.95);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #ffa07a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .ad-container {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .home-link {
+        font-size: 28px;
+        padding: 25px 50px;
+      }
+
+      .rocket-link {
+        font-size: 16px;
+        padding: 10px 15px;
+      }
+
+      .message {
+        font-size: 25px;
+        margin-bottom: 0px; /* 간격을 완전히 제거 */
+      }
+
+      .button-container {
+        gap: 10px;
+      }
+
+      .footer {
+        font-size: 12px;
+      }
+
+      .ad-container {
+        bottom: 20px;
+      }
+
+      .fixed-message {
+        font-size: 18px;
+      }
+
+      .android-message {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+
+      .ios-message {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+    }
+  </style>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+
+    function addToHomeScreen() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      if (userAgent.includes('android')) {
+        alert('안드로이드에서는 Chrome실행 -> 우측 상단의 (⁝) 세 점 아이콘 -> 홈 화면에 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
+      } else if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
+        alert('아이폰에서는 Safari실행-> 공유하기 (위쪽 화살표 공유 아이콘) → 홈 화면에 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
+      } else {
+        alert('홈 화면 추가는 현재 사용 중인 디바이스에서 지원되지 않을 수 있습니다. *아이폰 safri의 경우 왼쪽 하단의 이모티콘 *가* 클릭-> 모바일 웹 사이트 요청 클릭-> 공유하기 (위쪽 화살표 공유 아이콘) → 홈 화면 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+  <h1>Jun's 쿠팡</h1>
+
+  <iframe src="https://coupa.ng/cg6dhp" width="100%" height="120" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+
+  <p class="message">오늘도 좋은 하루 보내세요!🥳</p>
+
+  <div class="button-container">
+    <a class="rocket-link" href="https://link.coupang.com/a/b9ObpD" target="_blank">
+      로켓프래쉬
+      <span class="emoji">🚀</span>
+    </a>
+    <a class="rocket-link" href="https://link.coupang.com/a/b9Obfr" target="_blank">
+      로켓 와우
+      <span class="emoji">🌟</span>
+    </a>
+    <a class="rocket-link" href="https://link.coupang.com/a/b9ObIG" target="_blank">
+      로켓 배송
+      <span class="emoji">📦</span>
+    </a>
+    <a class="home-link" href="https://link.coupang.com/a/b9NeOF" target="_blank">
+      쿠팡 홈 바로가기
+      <span class="emoji">🏠</span>
+    </a>
+    <a class="rocket-link" href="https://link.coupang.com/a/b9On3U" target="_blank">
+      여성패션
+      <span class="emoji">👗</span>
+    </a>
+    <a class="rocket-link" href="https://link.coupang.com/a/b9OocF" target="_blank">
+      남성패션
+      <span class="emoji">👔</span>
+    </a>
+    <a class="rocket-link" href="https://link.coupang.com/a/b9Oou4" target="_blank">
+      유아동패션
+      <span class="emoji">👶</span>
+    </a>
+    <button onclick="addToHomeScreen()" class="home-link">
+      홈 화면에 추가
+      <span class="emoji">➕</span>
+    </button>
+  </div>
+
+  <div class="fixed-message">
+    <div class="android-message">
+      안드로이드는 Chrome → 우측 상단의 (⁝) 세 점 아이콘 → 홈 화면에 추가
+    </div>
+    <div class="ios-message">
+      아이폰은 Safari → 공유하기 → 홈 화면에 추가 버튼을 눌러주세요.
+    </div>
+  </div>
+
+  <div class="ad-container">
+    <iframe src="https://ads-partners.coupang.com/widgets.html?id=831301&template=banner&trackingCode=AF9987936&subId=&width=728&height=90" 
+            width="728" 
+            height="90" 
+            frameborder="0" 
+            scrolling="no" 
+            referrerpolicy="unsafe-url" 
+            browsingtopics></iframe>
+  </div>
+
+  <div class="footer">
+    쿠팡파트너스 활동의 일환으로 일정액의 수수료를 제공받고 있습니다.
+  </div>
+
+</body>
+</html>
