@@ -3,8 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jun's 쿠팡</title>
-  <link rel="manifest" href="/manifest.json">
+  <title>Jun's Market</title>
+  
+  <!-- Favicon Files -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <style>
     body {
@@ -19,14 +27,15 @@
     }
 
     iframe {
-      margin-top: 20px;
+      margin-top: 0; /* 간격을 대폭 줄였습니다 */
+      margin-bottom: 0; /* 간격을 대폭 줄였습니다 */
       max-width: 100%;
     }
 
     h1 {
       font-size: 38px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 10px; /* 하단 간격을 줄였습니다 */
     }
 
     .button-container {
@@ -39,18 +48,18 @@
 
     .home-link {
       display: inline-block;
-      padding: 30px 60px;
+      padding: 30px 120px;
       background-color: #ff6347;
       color: white;
       text-decoration: none;
       border-radius: 5px;
-      font-size: 28px;
+      font-size: 30px;
       margin-top: 0px;
     }
 
     .rocket-link {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 20px 30px;
       background-color: #ff7f50;
       color: white;
       text-decoration: none;
@@ -66,11 +75,11 @@
     }
 
     .message {
-      font-size: 60px;
+      font-size: 50px;
       font-weight: bold;
       color: #faf4f4;
-      margin-top: 30px;
-      margin-bottom: 80px;
+      margin-top: 10px; /* 위쪽 간격을 추가하여 조금 더 위로 이동시켰습니다 */
+      margin-bottom: 0px; /* 간격을 완전히 제거 */
     }
 
     .fixed-message {
@@ -87,21 +96,21 @@
       padding: 10px 15px;
       box-sizing: border-box;
       white-space: nowrap;
-      background-color: rgba(0, 0, 0, 0.5); /* 배경 투명도 설정 */
-      border-radius: 5px; /* 테두리 둥글게 설정 */
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
     }
 
     .android-message {
-      margin-bottom: 10px;
+      margin-bottom: 5px; /* 간격을 대폭 줄였습니다 */
       padding: 5px 10px;
-      font-size: 13px; /* 글자 크기를 줄임 */
+      font-size: 13px;
       background-color: rgba(224, 247, 250, 0.9);
     }
 
     .ios-message {
-      margin-bottom: 10px;
+      margin-bottom: 5px; /* 간격을 대폭 줄였습니다 */
       padding: 5px 10px;
-      font-size: 14px; /* 글자 크기를 줄임 */
+      font-size: 14px;
       background-color: rgba(255, 223, 186, 0.95);
     }
 
@@ -140,8 +149,8 @@
       }
 
       .home-link {
-        font-size: 22px;
-        padding: 20px 40px;
+        font-size: 28px;
+        padding: 25px 50px;
       }
 
       .rocket-link {
@@ -150,8 +159,8 @@
       }
 
       .message {
-        font-size: 40px;
-        margin-bottom: 60px;
+        font-size: 25px;
+        margin-bottom: 0px; /* 간격을 완전히 제거 */
       }
 
       .button-container {
@@ -171,12 +180,12 @@
       }
 
       .android-message {
-        font-size: 12px; /* 글자 크기를 줄임 */
+        font-size: 12px;
         padding: 5px 10px;
       }
 
       .ios-message {
-        font-size: 12px; /* 글자 크기를 줄임 */
+        font-size: 12px;
         padding: 5px 10px;
       }
     }
@@ -200,7 +209,7 @@
       } else if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
         alert('아이폰에서는 Safari실행-> 공유하기 (위쪽 화살표 공유 아이콘) → 홈 화면에 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
       } else {
-        alert('홈 화면 추가는 현재 사용 중인 디바이스에서 지원되지 않을 수 있습니다. *아이폰 safri의 경우 왼쪽 하단의 이모티콘 *가* 클릭-> 모바일 웹사이트요청 클릭-> 공유하기 (위쪽 화살표 공유 아이콘) → 홈 화면 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
+        alert('홈 화면 추가는 현재 사용 중인 디바이스에서 지원되지 않을 수 있습니다. *아이폰 safri의 경우 왼쪽 하단의 이모티콘 *가* 클릭-> 모바일 웹 사이트 요청 클릭-> 공유하기 (위쪽 화살표 공유 아이콘) → 홈 화면 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
       }
     }
   </script>
@@ -208,9 +217,11 @@
 </head>
 <body>
 
-  <h1>Jun's 쿠팡</h1>
+  <h1>Jun's Market</h1>
 
   <iframe src="https://coupa.ng/cg6dhp" width="100%" height="120" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+
+  <p class="message">오늘도 좋은 하루 보내세요!🥳</p>
 
   <div class="button-container">
     <a class="rocket-link" href="https://link.coupang.com/a/b9ObpD" target="_blank">
@@ -247,8 +258,6 @@
     </button>
   </div>
 
-  <p class="message">오늘도 좋은 하루 보내세요!🥳</p>
-
   <div class="fixed-message">
     <div class="android-message">
       안드로이드는 Chrome → 우측 상단의 (⁝) 세 점 아이콘 → 홈 화면에 추가
@@ -272,54 +281,5 @@
     쿠팡파트너스 활동의 일환으로 일정액의 수수료를 제공받고 있습니다.
   </div>
 
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
-
-<style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-image: url('background.jpg'); /* 이미지 파일 경로 */
-      background-size: cover; /* 배경 이미지를 화면 크기에 맞게 확장 */
-      background-position: center; /* 배경 이미지가 화면 중앙에 오도록 설정 */
-      text-align: center;
-    }
-    iframe {
-      margin-top: 30px;
-    }
-    .home-link {
-      display: inline-block;
-      padding: 30px 60px;  /* 가로, 세로를 더 크게 설정 */
-      background-color: #ff6347;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 28px;  /* 글자 크기를 더 크게 설정 */
-      margin-top: 0px;
-    }
-
-    h1 {
-        font-size: 38px; /* 글자 크기를 더 크게 설정 */
-        font-weight: bold; /* 글자를 두껍게 설정 */
-      }
-      .message {
-        font-size: 60px; /* 글자 크기를 더 크게 설정 (예: 40px) */
-        font-weight: bold; /* 글자 굵기 설정 */
-        color: #faf4f4; /* 글자 색상 */
-        margin-top: 30px; /* 위쪽 여백 설정 */
-        margin-bottom: 80px; /* 아래쪽 여백을 80px로 설정 (기존보다 20 증가) */
-      }
-    
-  </style>
-  
