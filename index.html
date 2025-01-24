@@ -43,7 +43,7 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
     .home-link {
@@ -84,7 +84,7 @@
 
     .fixed-message {
       position: fixed;
-      bottom: 185px;
+      bottom: 200px;
       left: 50%;
       transform: translateX(-50%);
       width: auto;
@@ -138,7 +138,7 @@
 
     .ad-container {
       position: fixed;
-      bottom: 40px;
+      bottom: 0px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -172,11 +172,12 @@
       }
 
       .ad-container {
-        bottom: 40px;
+        bottom: 0px;
       }
 
       .fixed-message {
         font-size: 18px;
+        bottom: 0px;
       }
 
       .android-message {
@@ -295,7 +296,7 @@
     </div>
   </div>
 
-  <div class="ad-container" style="margin-top: 100px;"> <!-- margin-top 값을 50px에서 100px로 늘림 -->
+  <div class="ad-container" style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);">
     <iframe src="https://ads-partners.coupang.com/widgets.html?id=831301&template=banner&trackingCode=AF9987936&subId=&width=728&height=90" 
             width="1300" 
             height="130" 
