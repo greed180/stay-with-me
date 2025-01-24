@@ -96,7 +96,8 @@
       padding: 10px 15px;
       box-sizing: border-box;
       white-space: nowrap;
-      background-color: rgba(0, 0, 0, 0.5);
+      /* 배경 색 제거 */
+      background-color: transparent; /* 투명으로 설정 */
       border-radius: 5px;
     }
 
@@ -105,6 +106,7 @@
       padding: 5px 10px;
       font-size: 13px;
       background-color: rgba(224, 247, 250, 0.9);
+      animation: slide-right-to-left 15s linear infinite; /* 애니메이션 적용 */
     }
 
     .ios-message {
@@ -112,7 +114,19 @@
       padding: 5px 10px;
       font-size: 14px;
       background-color: rgba(255, 223, 186, 0.95);
+      animation: slide-right-to-left 14s linear infinite; /* 애니메이션 적용 */
     }
+
+    /* 애니메이션 정의 */
+    @keyframes slide-right-to-left {
+      0% {
+        transform: translateX(100%); /* 화면 오른쪽 밖 */
+      }
+      100% {
+        transform: translateX(-100%); /* 화면 왼쪽 밖 */
+      }
+    }
+    
 
     .footer {
       position: fixed;
@@ -226,29 +240,15 @@
       const userAgent = navigator.userAgent.toLowerCase();
       
       if (userAgent.includes('android')) {
-        alert('안드로이드에서는\n*Chrome 또는 삼성인터넷 실행* ->\n 우측 상단 또는 우측 하단의  (⁝) 세 점 아이콘 ->\n*홈 화면에 추가* 버튼을 눌러주세요.\n홈 화면에 바로가기가 생성됩니다.');
+        alert('안드로이드는\nChrome 또는 삼성인터넷 실행 ->\n 우측 상단 또는 우측 하단의  (⁝) 세 점 아이콘 ->\n*홈 화면에 추가* 버튼을 눌러주세요.\n홈 화면에 바로가기가 생성됩니다.');
       } else if (userAgent.includes('iphone') || userAgent.includes('ipad')) {
-        alert('아이폰에서는\n*Safari 실행* -> \n*공유하기* (위쪽 화살표 공유 아이콘) →\n*홈 화면에 추가* 버튼을 눌러주세요.\n홈 화면에 바로가기가 생성됩니다.');
+        alert('아이폰에서는\nSafari 실행 -> \n*공유하기* (위쪽 화살표 공유 아이콘) →\n*홈 화면에 추가* 버튼을 눌러주세요.\n홈 화면에 바로가기가 생성됩니다.');
       } else if (userAgent.includes('chrome') || userAgent.includes('edge')) {
-        alert('컴퓨터에서는\n*Chrome 또는 Edge 실행* -> \n우측 상단의 *(...) 세 점 아이콘* 클릭 ->\n*앱* 또는 *전송,저장,공유* 버튼 클릭 ->\n *이 사이트(페이지)를 앱으로 설치* 버튼을 눌러주세요.\n홈 화면에 바로가기가 생성됩니다.');
+        alert('컴퓨터에서는\nChrome 또는 Edge 실행 -> \n우측 상단의 (...) 세 점 아이콘 클릭 ->\n앱 또는 *전송,저장,공유* 버튼 클릭 ->\n *이 사이트(페이지)를 앱으로 설치* 버튼을 눌러주세요.\n홈 화면에 바로가기가 생성됩니다.');
       } else {
         alert('홈 화면 추가는 현재 사용 중인 디바이스에서 지원되지 않을 수 있습니다.\n즐겨찾기 설정을 해주세요!');
       }
     }
-    
-  
-    // 7초 후 안드로이드 메시지와 아이폰 메시지 숨기기
-    setTimeout(function() {
-      const androidMessage = document.querySelector('.android-message');
-      const iosMessage = document.querySelector('.ios-message');
-  
-      if (androidMessage) {
-        androidMessage.style.display = 'none';
-      }
-      if (iosMessage) {
-        iosMessage.style.display = 'none';
-      }
-    }, 5000); // 5초 (5000ms) 후에 실행
   </script>
 
 </head>
