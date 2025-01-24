@@ -27,15 +27,33 @@
     }
 
     iframe {
-      margin-top: 0; /* 간격을 대폭 줄였습니다 */
-      margin-bottom: 0; /* 간격을 대폭 줄였습니다 */
+      margin-top: 0;
+      margin-bottom: 0;
       max-width: 100%;
     }
 
     h1 {
       font-size: 38px;
       font-weight: bold;
-      margin-bottom: 10px; /* 하단 간격을 줄였습니다 */
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .small-button {
+      display: inline-block;
+      padding: 20px 20px;
+      font-size: 14px;
+      background-color: #3c73c5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s;
+    }
+
+    .small-button:hover {
+      background-color: #617acc;
     }
 
     .button-container {
@@ -78,8 +96,8 @@
       font-size: 50px;
       font-weight: bold;
       color: #faf4f4;
-      margin-top: 10px; /* 위쪽 간격을 추가하여 조금 더 위로 이동시켰습니다 */
-      margin-bottom: 0px; /* 간격을 완전히 제거 */
+      margin-top: 10px;
+      margin-bottom: 0px;
     }
 
     .fixed-message {
@@ -96,37 +114,34 @@
       padding: 10px 15px;
       box-sizing: border-box;
       white-space: nowrap;
-      /* 배경 색 제거 */
-      background-color: transparent; /* 투명으로 설정 */
+      background-color: transparent;
       border-radius: 5px;
     }
 
     .android-message {
-      margin-bottom:5px; /* 간격을 대폭 줄였습니다 */
+      margin-bottom:5px;
       padding: 5px 10px;
       font-size: 13px;
       background-color: rgba(224, 247, 250, 0.9);
-      animation: slide-right-to-left 15s linear infinite; /* 애니메이션 적용 */
+      animation: slide-right-to-left 15s linear infinite;
     }
 
     .ios-message {
-      margin-top: 2px; /* 간격을 대폭 줄였습니다 */
+      margin-top: 2px;
       padding: 5px 10px;
       font-size: 14px;
       background-color: rgba(255, 223, 186, 0.95);
-      animation: slide-right-to-left 14s linear infinite; /* 애니메이션 적용 */
+      animation: slide-right-to-left 14s linear infinite;
     }
 
-    /* 애니메이션 정의 */
     @keyframes slide-right-to-left {
       0% {
-        transform: translateX(100%); /* 화면 오른쪽 밖 */
+        transform: translateX(100%);
       }
       100% {
-        transform: translateX(-100%); /* 화면 왼쪽 밖 */
+        transform: translateX(-100%);
       }
     }
-    
 
     .footer {
       position: fixed;
@@ -157,71 +172,35 @@
       transform: translateX(-50%);
     }
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 28px;
-      }
-
-      .home-link {
-        font-size: 28px;
-        padding: 25px 60px;
-      }
-
-      .rocket-link {
-        font-size: 16px;
-        padding: 10px 15px;
-      }
-
-      .message {
-        font-size: 25px;
-        margin-bottom: 0px; /* 간격을 완전히 제거 */
-      }
-
-      .button-container {
-        gap: 10px;
-      }
-
-      .footer {
-        font-size: 12px;
-      }
-
-      .ad-container {
-        bottom: 0px;
-      }
-
-      .fixed-message {
-        font-size: 18px;
-        bottom: 40px;
-      }
-
-      .android-message {
-        font-size: 12px;
-        padding: 5px 10px;
-      }
-
-      .ios-message {
-        font-size: 12px;
-        padding: 5px 10px;
-      }
-    }
-
-    /* 반짝거리는 효과 */
     .sparkle {
-      font-size: 30px; /* 글자 크기 */
-      font-weight: bold; /* 굵은 글씨 */
-      color: #ff6347; /* 기본 글자 색상 */
-      animation: sparkle-effect 1.5s infinite; /* 애니메이션 적용 */
+      font-size: 30px;
+      font-weight: bold;
+      color: #ff6347;
+      animation: sparkle-effect 2.0s infinite;
     }
 
     @keyframes sparkle-effect {
       0%, 100% {
-        color: #856a46; /* 주황색 */
-        text-shadow: 0 0 5px #e4bab3, 0 0 10px #ffa07a, 0 0 20px #ec794f;
+        color: #141413;
+        text-shadow: 0 0 5px #41312f, 0 0 10px #ffa07a, 0 0 20px #ec794f;
       }
       50% {
-        color: #abe450; /* 밝은 주황색 */
+        color: #abe450;
         text-shadow: 0 0 10px #ffa07a, 0 0 20px #ddb9b2, 0 0 30px #d1643d;
       }
+    }
+
+    /* QR 코드 이미지 덮는 스타일 */
+    .qr-code {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      max-width: 95%;
+      max-height: 95%;
+      cursor: pointer;
     }
   </style>
 
@@ -235,7 +214,7 @@
           console.log('Service Worker registration failed:', error);
         });
     }
-  
+
     function addToHomeScreen() {
       const userAgent = navigator.userAgent.toLowerCase();
       
@@ -249,16 +228,25 @@
         alert('1. 아이폰의 경우\n좌측 하단의 *가* 버튼 클릭 ->\n2. *모바일 웹사이트 요청* 버튼 클릭후\n3.  홈 화면에 추가➕ 버튼을 클릭해주세요! \n4. 위 방법이 작동하지 않는다면, 즐겨찾기 추가를 해주세요!\n\n <설치를 완료하셨다면, \n친구에게 사이트를 공유해주세요!\n저에게 큰 힘이 된답니다!😊>\n\n⭐️공유법⭐️\n1. 앱을 꾹 누르신 후 \n2. 공유 버튼을 클릭 해주세요!  ');
       }
     }
+
+    function showQRCode() {
+      const qrCode = document.getElementById('qr-code');
+      if (qrCode.style.display === 'block') {
+        qrCode.style.display = 'none';
+      } else {
+        qrCode.style.display = 'block';
+      }
+    }
   </script>
 
 </head>
 <body>
 
-  <h1>Jun's Market</h1>
+  <h1>Jun's Market <button class="small-button" onclick="showQRCode()">QR 코드</button></h1>
 
   <iframe src="https://coupa.ng/cg6dhp" width="100%" height="80" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics style="margin-bottom: 0px;"></iframe>
 
-  <p class="message" style="font-size: 18px;  color:  rgb(223, 117, 117); margin-bottom: 10px;">
+  <p class="message" style="font-size: 18px;  color:  rgb(39, 35, 35); margin-bottom: 10px;">
     *이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.*</p>
 
   <p class="message sparkle">오늘도 좋은 하루 보내세요!🥳</p>
@@ -295,6 +283,7 @@
     <button onclick="addToHomeScreen()" class="home-link">
       홈 화면에 추가
       <span class="emoji">➕</span>
+       공유
     </button>
   </div>
 
@@ -306,6 +295,9 @@
       아이폰은 Safari → 공유하기 → 홈 화면에 추가 버튼을 눌러주세요.
     </div>
   </div>
+
+  <!-- QR 코드 이미지 (처음엔 숨겨짐) -->
+  <img id="qr-code" src="QR코드 최종본.png" alt="QR 코드" class="qr-code">
 
   <div class="ad-container" style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);">
     <iframe src="https://ads-partners.coupang.com/widgets.html?id=831301&template=banner&trackingCode=AF9987936&subId=&width=728&height=90" 
