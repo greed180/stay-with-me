@@ -177,7 +177,7 @@
 
       .fixed-message {
         font-size: 18px;
-        bottom: 0px;
+        bottom: 40px;
       }
 
       .android-message {
@@ -188,6 +188,25 @@
       .ios-message {
         font-size: 12px;
         padding: 5px 10px;
+      }
+    }
+
+    /* 반짝거리는 효과 */
+    .sparkle {
+      font-size: 30px; /* 글자 크기 */
+      font-weight: bold; /* 굵은 글씨 */
+      color: #ff6347; /* 기본 글자 색상 */
+      animation: sparkle-effect 1.5s infinite; /* 애니메이션 적용 */
+    }
+
+    @keyframes sparkle-effect {
+      0%, 100% {
+        color: #856a46; /* 주황색 */
+        text-shadow: 0 0 5px #e4bab3, 0 0 10px #ffa07a, 0 0 20px #ec794f;
+      }
+      50% {
+        color: #abe450; /* 밝은 주황색 */
+        text-shadow: 0 0 10px #ffa07a, 0 0 20px #ddb9b2, 0 0 30px #d1643d;
       }
     }
   </style>
@@ -202,7 +221,7 @@
           console.log('Service Worker registration failed:', error);
         });
     }
-
+  
     function addToHomeScreen() {
       const userAgent = navigator.userAgent.toLowerCase();
       if (userAgent.includes('android')) {
@@ -213,6 +232,19 @@
         alert('홈 화면 추가는 현재 사용 중인 디바이스에서 지원되지 않을 수 있습니다. *아이폰 safri의 경우 왼쪽 하단의 이모티콘 *가* 클릭-> 모바일 웹 사이트 요청 클릭-> 공유하기 (위쪽 화살표 공유 아이콘) → 홈 화면 추가 버튼을 눌러주세요. 홈 화면 추가시 바로가기가 생성됩니다.');
       }
     }
+  
+    // 3초 후 안드로이드 메시지와 아이폰 메시지 숨기기
+    setTimeout(function() {
+      const androidMessage = document.querySelector('.android-message');
+      const iosMessage = document.querySelector('.ios-message');
+  
+      if (androidMessage) {
+        androidMessage.style.display = 'none';
+      }
+      if (iosMessage) {
+        iosMessage.style.display = 'none';
+      }
+    }, 7000); // 7초 (7000ms) 후에 실행
   </script>
 
 </head>
@@ -220,35 +252,12 @@
 
   <h1>Jun's Market</h1>
 
-  <iframe src="https://coupa.ng/cg6dhp" width="100%" height="80" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics style= "margin-bottom: 0px;"></iframe>
+  <iframe src="https://coupa.ng/cg6dhp" width="100%" height="80" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics style="margin-bottom: 0px;"></iframe>
 
   <p class="message" style="font-size: 18px;  color:  rgb(223, 117, 117); margin-bottom: 10px;">
-    *이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.*
+    *이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.*</p>
 
-
-    
-    <p class="message sparkle">오늘도 좋은 하루 보내세요!🥳</p>
-
-    <style>
-      /* 반짝거리는 효과 */
-      .sparkle {
-        font-size: 30px; /* 글자 크기 */
-        font-weight: bold; /* 굵은 글씨 */
-        color: #ff6347; /* 기본 글자 색상 */
-        animation: sparkle-effect 1.5s infinite; /* 애니메이션 적용 */
-      }
-    
-      @keyframes sparkle-effect {
-        0%, 100% {
-          color: #856a46; /* 주황색 */
-          text-shadow: 0 0 5px #e4bab3, 0 0 10px #ffa07a, 0 0 20px #ec794f;
-        }
-        50% {
-          color: #abe450; /* 밝은 주황색 */
-          text-shadow: 0 0 10px #ffa07a, 0 0 20px #ddb9b2, 0 0 30px #d1643d;
-        }
-      }
-    </style>
+  <p class="message sparkle">오늘도 좋은 하루 보내세요!🥳</p>
 
   <div class="button-container">
     <a class="rocket-link" href="https://link.coupang.com/a/b9ObpD" target="_blank">
@@ -288,8 +297,6 @@
   <div class="fixed-message">
     <div class="android-message">
       안드로이드는 Chrome → 우측 상단의 (⁝) 세 점 아이콘 → 홈 화면에 추가
-
-      
     </div>
     <div class="ios-message">
       아이폰은 Safari → 공유하기 → 홈 화면에 추가 버튼을 눌러주세요.
@@ -305,8 +312,6 @@
             referrerpolicy="unsafe-url" 
             browsingtopics></iframe>
   </div>
-
-
 
 </body>
 </html>
