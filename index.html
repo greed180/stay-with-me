@@ -48,13 +48,13 @@
 
     .home-link {
       display: inline-block;
-      padding: 30px 120px;
+      padding: 40px 140px;
       background-color: #ff6347;
       color: white;
       text-decoration: none;
       border-radius: 5px;
       font-size: 30px;
-      margin-top: 0px;
+      margin-top: 5px;
     }
 
     .rocket-link {
@@ -84,7 +84,7 @@
 
     .fixed-message {
       position: fixed;
-      bottom: 140px;
+      bottom: 185px;
       left: 50%;
       transform: translateX(-50%);
       width: auto;
@@ -101,14 +101,14 @@
     }
 
     .android-message {
-      margin-bottom: 5px; /* 간격을 대폭 줄였습니다 */
+      margin-bottom:5px; /* 간격을 대폭 줄였습니다 */
       padding: 5px 10px;
       font-size: 13px;
       background-color: rgba(224, 247, 250, 0.9);
     }
 
     .ios-message {
-      margin-bottom: 5px; /* 간격을 대폭 줄였습니다 */
+      margin-top: 2px; /* 간격을 대폭 줄였습니다 */
       padding: 5px 10px;
       font-size: 14px;
       background-color: rgba(255, 223, 186, 0.95);
@@ -150,7 +150,7 @@
 
       .home-link {
         font-size: 28px;
-        padding: 25px 50px;
+        padding: 25px 60px;
       }
 
       .rocket-link {
@@ -172,7 +172,7 @@
       }
 
       .ad-container {
-        bottom: 20px;
+        bottom: 40px;
       }
 
       .fixed-message {
@@ -219,9 +219,35 @@
 
   <h1>Jun's Market</h1>
 
-  <iframe src="https://coupa.ng/cg6dhp" width="100%" height="120" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics></iframe>
+  <iframe src="https://coupa.ng/cg6dhp" width="100%" height="80" frameborder="0" scrolling="no" referrerpolicy="unsafe-url" browsingtopics style= "margin-bottom: 65px;"></iframe>
 
-  <p class="message">오늘도 좋은 하루 보내세요!🥳</p>
+  <p class="message" style="font-size: 25px;  color:  rgb(223, 117, 117); margin-bottom: 10px;">
+    *이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.*
+
+
+    
+    <p class="message sparkle">오늘도 좋은 하루 보내세요!🥳</p>
+
+    <style>
+      /* 반짝거리는 효과 */
+      .sparkle {
+        font-size: 65px; /* 글자 크기 */
+        font-weight: bold; /* 굵은 글씨 */
+        color: #ff6347; /* 기본 글자 색상 */
+        animation: sparkle-effect 1.5s infinite; /* 애니메이션 적용 */
+      }
+    
+      @keyframes sparkle-effect {
+        0%, 100% {
+          color: #856a46; /* 주황색 */
+          text-shadow: 0 0 5px #e4bab3, 0 0 10px #ffa07a, 0 0 20px #ec794f;
+        }
+        50% {
+          color: #abe450; /* 밝은 주황색 */
+          text-shadow: 0 0 10px #ffa07a, 0 0 20px #ddb9b2, 0 0 30px #d1643d;
+        }
+      }
+    </style>
 
   <div class="button-container">
     <a class="rocket-link" href="https://link.coupang.com/a/b9ObpD" target="_blank">
@@ -261,25 +287,25 @@
   <div class="fixed-message">
     <div class="android-message">
       안드로이드는 Chrome → 우측 상단의 (⁝) 세 점 아이콘 → 홈 화면에 추가
+
+      
     </div>
     <div class="ios-message">
       아이폰은 Safari → 공유하기 → 홈 화면에 추가 버튼을 눌러주세요.
     </div>
   </div>
 
-  <div class="ad-container">
+  <div class="ad-container" style="margin-top: 100px;"> <!-- margin-top 값을 50px에서 100px로 늘림 -->
     <iframe src="https://ads-partners.coupang.com/widgets.html?id=831301&template=banner&trackingCode=AF9987936&subId=&width=728&height=90" 
-            width="728" 
-            height="90" 
+            width="1300" 
+            height="130" 
             frameborder="0" 
             scrolling="no" 
             referrerpolicy="unsafe-url" 
             browsingtopics></iframe>
   </div>
 
-  <div class="footer">
-    쿠팡파트너스 활동의 일환으로 일정액의 수수료를 제공받고 있습니다.
-  </div>
+
 
 </body>
 </html>
